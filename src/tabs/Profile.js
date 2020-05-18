@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-export default function HomeScreen() {
+export default function ProfileScreen() {
   return (
     <View style={styles.main}>
-      <Text>Home!</Text>
+      <Text>Profile!</Text>
     </View>
   );
 }
@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'skyblue',
+    backgroundColor: 'pink',
   },
 });
