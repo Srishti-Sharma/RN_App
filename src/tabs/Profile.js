@@ -1,14 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
+import {Text, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function ProfileScreen() {
-  const count = useSelector(counter => counter);
   return (
-    <View style={styles.main}>
+    <SafeAreaView style={styles.main}>
       <Text>Profile!</Text>
-      <Text>Count = {count}</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -18,5 +16,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'pink',
+    padding: 10,
   },
 });

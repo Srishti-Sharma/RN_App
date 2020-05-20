@@ -1,11 +1,18 @@
-const count = 0;
+const intialState = {
+  posts: [],
+  user_name: '',
+  userId: '',
+};
 
-export default (state = count, action) => {
+export default (state = intialState, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
+    case 'ADD_POSTS':
+      let newposts = [...state.posts, ...action.payload];
+      state = {
+        ...state,
+        posts: newposts,
+      };
+      return state;
     default:
       return state;
   }

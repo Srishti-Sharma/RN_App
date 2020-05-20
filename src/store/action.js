@@ -1,7 +1,6 @@
-export const Increment = () => ({
-  type: 'INCREMENT',
-});
-
-export const Decrement = () => ({
-  type: 'DECREMENT',
-});
+export const AddPosts = posts => {
+  return {
+    type: 'ADD_POSTS',
+    payload: posts,
+  };
+};
