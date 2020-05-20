@@ -1,13 +1,12 @@
 import React from 'react';
-import {Text, StyleSheet, SafeAreaView} from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 
 import List from '../components/List';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.main}>
-      <List />
-      <Text>Home! </Text>
+      <List navigation={navigation} />
     </SafeAreaView>
   );
 };
@@ -15,6 +14,12 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  heading: {
+    color: 'indianred',
+    fontSize: 30,
+    marginTop: 15,
+    borderBottomColor: 'indianred',
+  },
   main: {
     flex: 1,
     justifyContent: 'center',

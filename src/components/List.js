@@ -8,15 +8,20 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {AddPosts} from '../store/action';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const Item = ({data}) => {
+const Item = ({data, navigation}) => {
   return (
-    <View style={styles.item}>
-      <Text style={styles.title}>
-        #{data.id}. Title: {data.title}
-      </Text>
-      <Text style={styles.body}>{data.body}</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Details', {data: data})}>
+      <View style={styles.item}>
+        <View style={styles.header}>
+          <Text style={styles.number}>{data.id}.</Text>
+          <Text style={styles.title}>Title: {data.title}</Text>
+        </View>
+        <Text style={styles.body}>{data.body}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -30,7 +35,7 @@ const renderFooter = isLoading => {
   );
 };
 
-const List = () => {
+const List = ({navigation}) => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [start, setStart] = useState(0);
@@ -65,7 +70,7 @@ const List = () => {
       onEndReached={() => getPosts()}
       onEndReachedThreshold={0}
       renderItem={({item}) => {
-        return <Item data={item} />;
+        return <Item data={item} navigation={navigation} />;
       }}
       keyExtractor={(_, index) => index.toString()}
     />
@@ -81,11 +86,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: 15,
     paddingTop: 20,
+    paddingLeft: 10,
   },
-  list: {
-    backgroundColor: 'pink',
-    flex: 1,
-    margin: 10,
+  number: {
+    fontSize: 20,
+    marginRight: 2,
   },
   title: {
     fontSize: 20,
@@ -93,6 +98,12 @@ const styles = StyleSheet.create({
   body: {
     fontSize: 15,
     height: 100,
+    color: 'grey',
+    padding: 10,
+    paddingLeft: 10,
+  },
+  header: {
+    flexDirection: 'row',
   },
   flatlist: {
     padding: 10,
