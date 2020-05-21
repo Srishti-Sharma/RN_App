@@ -65,7 +65,7 @@ const List = ({navigation}) => {
     <FlatList
       style={styles.flatlist}
       data={posts}
-      ListEmptyComponent={<Text> No Posts </Text>}
+      ListEmptyComponent={<Text> Loading Please Wait.... </Text>}
       ListFooterComponent={renderFooter(isLoading)}
       onEndReached={() => getPosts()}
       onEndReachedThreshold={0}
@@ -87,13 +87,17 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingTop: 20,
     paddingLeft: 10,
+    paddingRight: 10,
   },
   number: {
     fontSize: 20,
     marginRight: 2,
   },
   title: {
+    paddingRight: 10,
     fontSize: 20,
+    flexWrap: 'wrap',
+    flex: 1,
   },
   body: {
     fontSize: 15,

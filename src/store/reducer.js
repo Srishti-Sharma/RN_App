@@ -1,7 +1,7 @@
 const intialState = {
   posts: [],
-  user_name: '',
-  userId: '',
+  userName: 'John Dee',
+  userId: '1',
 };
 
 export default (state = intialState, action) => {
