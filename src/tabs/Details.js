@@ -1,8 +1,9 @@
 import React from 'react';
 import {Dimensions, View, StyleSheet, ScrollView} from 'react-native';
 import Carousel from './Carousal';
+import CustomText from '../components/CustomText';
 
-const {width, height} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 export default function DetailScreen({route}) {
   const {data} = route.params;
@@ -16,12 +17,12 @@ export default function DetailScreen({route}) {
   return (
     <View style={styles.main}>
       <Carousel data={URI} />
-      {/* <ScrollView> */}
-      {/* <Text style={styles.body}>
-          {data.body}
-          {data.body}
-        </Text> */}
-      {/* </ScrollView> */}
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.fieldBox}>
+          <CustomText style={styles.body} title={` ${data.body}`} />
+        </View>
+      </ScrollView>
+      <View style={styles.footer} />
     </View>
   );
 }
@@ -31,5 +32,34 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'white',
+  },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+    marginBottom: 20,
+    marginHorizontal: 25,
+    padding: 10,
+  },
+  fieldBox: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  body: {
+    fontSize: 16,
+    paddingLeft: 20,
+    padding: 10,
+  },
+  footer: {
+    marginBottom: 60,
+    marginLeft: 80,
+    width: width - 150,
+    borderWidth: 2,
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderColor: 'indianred',
   },
 });

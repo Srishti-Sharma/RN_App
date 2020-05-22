@@ -25,7 +25,16 @@ function HomeStack() {
 export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        tabBarOptions={{
+          activeTintColor: 'indianred',
+          labelStyle: {
+            fontSize: 16,
+          },
+          tabStyle: {
+            justifyContent: 'center',
+          },
+        }}>
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>

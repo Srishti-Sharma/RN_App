@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  FlatList,
-  ActivityIndicator,
-} from 'react-native';
+import {StyleSheet, View, FlatList, ActivityIndicator} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {AddPosts} from '../store/action';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import CustomText from '../components/CustomText';
 
 const Item = ({data, navigation}) => {
   return (
@@ -16,10 +11,10 @@ const Item = ({data, navigation}) => {
       onPress={() => navigation.navigate('Details', {data: data})}>
       <View style={styles.item}>
         <View style={styles.header}>
-          <Text style={styles.number}>{data.id}.</Text>
-          <Text style={styles.title}>Title: {data.title}</Text>
+          <CustomText style={styles.number} title={data.id} />
+          <CustomText style={styles.title} title={`Title: ${data.title}`} />
         </View>
-        <Text style={styles.body}>{data.body}</Text>
+        <CustomText style={styles.body} title={data.body} />
       </View>
     </TouchableOpacity>
   );
@@ -65,7 +60,13 @@ const List = ({navigation}) => {
     <FlatList
       style={styles.flatlist}
       data={posts}
-      ListEmptyComponent={<Text> Loading Please Wait.... </Text>}
+      ListEmptyComponent={
+        <CustomText
+          style={styles.loadingText}
+          title={'Loading Please Wait....'}>
+          {' '}
+        </CustomText>
+      }
       ListFooterComponent={renderFooter(isLoading)}
       onEndReached={() => getPosts()}
       onEndReachedThreshold={0}
@@ -113,5 +114,9 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 50,
     marginBottom: 20,
+  },
+  loadingText: {
+    paddingTop: 10,
+    fontSize: 20,
   },
 });

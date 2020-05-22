@@ -1,13 +1,7 @@
-import React, {useState, useEffect, createRef} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  FlatList,
-  Animated,
-} from 'react-native';
+import React, {useEffect, createRef} from 'react';
+import {View, StyleSheet, Dimensions, FlatList, Animated} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import CustomText from '../components/CustomText';
 
 const {width, heigth} = Dimensions.get('window');
 const imageMargin = 30;
@@ -151,7 +145,7 @@ const Carousel = ({data}) => {
             onPress={() => {
               goToPrevious(data);
             }}>
-            <Text style={styles.pnText}>Previous</Text>
+            <CustomText style={styles.pnText} title={'Previous'} />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -159,7 +153,7 @@ const Carousel = ({data}) => {
             onPress={() => {
               goToNext(data);
             }}>
-            <Text style={styles.pnText}>Next</Text>
+            <CustomText style={styles.pnText} title={'Next'} />
           </TouchableOpacity>
         </View>
       </View>
@@ -173,7 +167,7 @@ const styles = StyleSheet.create({
     width: imageWidth,
     margin: imageMargin,
     marginBottom: 5,
-    height: 500,
+    height: 300,
     resizeMode: 'cover',
     borderRadius: imageWidth / 10,
   },
