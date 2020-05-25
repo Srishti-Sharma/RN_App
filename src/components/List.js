@@ -112,8 +112,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     padding: 10,
-    paddingBottom: 50,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   loadingText: {
     paddingTop: 10,
