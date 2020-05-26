@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../tabs/Home';
 import ProfileScreen from '../tabs/Profile';
 import DetailScreen from '../tabs/Details';
+import {defaultFont} from '../asset/font';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -15,7 +16,14 @@ function HomeStack() {
     <Stack.Navigator
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: {backgroundColor: 'indianred', height: 100},
+        headerStyle: {
+          backgroundColor: 'indianred',
+          height: 100,
+        },
+        headerTitleStyle: {
+          fontFamily: defaultFont,
+          fontSize: 20,
+        },
         headerBackTitleVisible: false,
         headerLeftContainerStyle: {
           paddingLeft: 10,

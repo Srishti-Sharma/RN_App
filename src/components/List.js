@@ -11,8 +11,11 @@ const Item = ({data, navigation}) => {
       onPress={() => navigation.navigate('Details', {data: data})}>
       <View style={styles.item}>
         <View style={styles.header}>
-          <CustomText style={styles.number} title={data.id} />
-          <CustomText style={styles.title} title={`Title: ${data.title}`} />
+          <CustomText style={styles.number} title={`${data.id}.`} />
+          <CustomText
+            style={styles.title}
+            title={`${data.title.toUpperCase()}`}
+          />
         </View>
         <CustomText style={styles.body} title={data.body} />
       </View>
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
   },
   title: {
     paddingRight: 10,
-    fontSize: 20,
+    fontSize: 18,
     flexWrap: 'wrap',
     flex: 1,
   },
